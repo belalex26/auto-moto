@@ -1,0 +1,28 @@
+.tabs__triggers {
+    display: flex;
+    max-width: 1000px;
+}
+
+.tabs__triggers-item {
+    color: #48494D;
+    text-align: center;
+    padding: 20px;
+    flex-grow: 1;
+    text-decoration: none;
+    border: 1px solid #D7D9DF;
+}
+
+.tabs__content-item {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.tabs__triggers-item--active {
+    background-color: #D12136;
+    color: #fff;
+}
+
+.tabs__content-item--active {
+    display: block;
+}

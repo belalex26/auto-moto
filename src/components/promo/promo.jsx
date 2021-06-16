@@ -1,10 +1,14 @@
 import React from 'react';
 
+import Slider from '../slider/slider';
+
 const Promo = () => {
   return (
     <section className="promo">
       <div className="container">
-        <div className="promo__slider"></div>
+        <div className="promo__slider">
+          <Slider/>
+        </div>
         <div className="promo__content">
             <h2 className="promo__title">Марпех 11</h2>
             <ul className="promo__info">
