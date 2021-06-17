@@ -1,8 +1,15 @@
 .slider {
     overflow: hidden;
+    width: 600px;
 }
 
 .slider__track {
     display: flex;
     transition: .2s;
 }
+
+/*
+
+.slider__item {
+    min-width: 600px;
+}*/

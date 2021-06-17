@@ -5,7 +5,7 @@ import Reviews from '../reviews/reviews';
 import Contacts from '../contacts/contacts';
 
 
-const Tabs = () => {
+const Tabs = ({handlerClick}) => {
 
     const activateTabs = () => {
         document.querySelector('.tabs__triggers-item').click();
@@ -43,7 +43,7 @@ const Tabs = () => {
                     <Specifications />
                 </div>
                 <div className="tabs__content-item" id="reviews">
-                    <Reviews />
+                    <Reviews handleClick={handlerClick}/>
                 </div>
                 <div className="tabs__content-item" id="contacts">
                     <Contacts />

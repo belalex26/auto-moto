@@ -1,0 +1,114 @@
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(72, 73, 77, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+
+    color: #48494D;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal__callback {
+    background-color: #F5F5F9;
+    padding: 30px 35px;
+    transform: scale(0.5);
+    transition: .4s all;
+    position: relative;
+}
+
+.modal__callback.active {
+    transform: scale(1);
+}
+
+.modal__title {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 34px;
+}
+
+.modal__label {
+    display: block;
+}
+
+.modal__input {
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border: 1px solid rgba(72, 73, 77, 0.2);
+    padding: 15px 5px 5px 5px;
+    font-size: 14px;
+    line-height: 19px;
+    color: #48494D;
+    min-width: 300px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border: 1px solid rgba(72, 73, 77, 0.7);
+    }
+}
+
+.modal__callback-form {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-column-gap: 4%;
+}
+
+.modal__rating-info {
+    color: #000;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.modal__submit {
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    background: #D12136;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16.5px 20px;
+    border: 1px solid transparent;
+    letter-spacing: 0.12em;
+}
+
+.modal__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    width: 15px;
+    height: 15px;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 21px;
+        transform: rotate(-45deg);
+        background-color: #9F9E9E;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 21px;
+        transform: rotate(45deg);
+        background-color: #9F9E9E;
+        
+    }
+}

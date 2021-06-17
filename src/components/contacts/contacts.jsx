@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Maps from '../maps/maps';
+
 const Contacts = () => {
   return (
       <section className="contacts">
@@ -14,7 +16,9 @@ const Contacts = () => {
             <p className="contacts__info-email">E-mail</p>
             <a className="contacts__info-email-link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
         </div>
-        <div className="contacts__map"></div>
+        <div className="contacts__map">
+          <Maps />
+        </div>
       </section>
   );
 };

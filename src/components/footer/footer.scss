@@ -17,4 +17,12 @@
     padding: 10px 34px;
     text-decoration: none;
     color: #48494D;
+
+    &:hover, 
+    &:focus,
+    &:active {
+        color: #fff;
+        background-color: #BD0C21;
+        outline: none;
+    }
 }
