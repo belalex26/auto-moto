@@ -23,10 +23,13 @@
 
 .modal__callback {
     background-color: #F5F5F9;
-    padding: 30px 35px;
     transform: scale(0.5);
     transition: .4s all;
     position: relative;
+    display: grid;
+    padding-top: 0px;
+    min-height: 415px;
+    width: 698px;
 }
 
 .modal__callback.active {
@@ -37,6 +40,10 @@
     font-size: 25px;
     font-weight: 600;
     line-height: 34px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 28px;
+    justify-self: center;
 }
 
 .modal__label {
@@ -47,7 +54,7 @@
     background: #FFFFFF;
     box-sizing: border-box;
     border: 1px solid rgba(72, 73, 77, 0.2);
-    padding: 15px 5px 5px 5px;
+    padding: 15px 5px 15px 25px;
     font-size: 14px;
     line-height: 19px;
     color: #48494D;
@@ -62,14 +69,58 @@
 
 .modal__callback-form {
     display: grid;
-    grid-template-columns: 48% 48%;
-    grid-column-gap: 4%;
+    grid-template-columns: 46% 46%;
+    grid-template-rows: 67% auto;
+    gap: 3%;
+    margin-left: 33px;
+    margin-top: -9px;
+}
+
+.modal__left-column {
+    display: grid;
+    grid-template-rows: 28% 28% 28%;
+    gap: 5%;
+}
+
+.modal__rating-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: -7px;
+    margin-bottom: 20px;
 }
 
 .modal__rating-info {
     color: #000;
     font-weight: 600;
     font-size: 15px;
+    padding-right: 15px;
+}
+
+.modal__rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+.modal__rating-item {
+    color: rgba(189, 190, 194, 0.7);
+    font-size: 33px;
+    cursor: pointer;
+    transition: .2s;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.modal__rating-item:hover,
+.modal__rating-item:hover ~ .modal__rating-item {
+    color: #D12136;
+}
+
+.modal__rating[data-total-value="1"] .modal__rating-item:nth-child(n+5),
+.modal__rating[data-total-value="2"] .modal__rating-item:nth-child(n+4),
+.modal__rating[data-total-value="3"] .modal__rating-item:nth-child(n+3),
+.modal__rating[data-total-value="4"] .modal__rating-item:nth-child(n+2),
+.modal__rating[data-total-value="5"] .modal__rating-item:nth-child(n+1) {
+    color: #D12136;
 }
 
 .modal__submit {
@@ -82,12 +133,16 @@
     padding: 16.5px 20px;
     border: 1px solid transparent;
     letter-spacing: 0.12em;
+    align-self: start;
+    justify-self: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .modal__close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 13px;
+    right: 26px;
     background-color: transparent;
     border: none;
     width: 15px;

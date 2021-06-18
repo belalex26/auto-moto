@@ -1,0 +1,160 @@
+.review {
+    position: relative;
+    font-size: 15px;
+}
+
+.reviews__btn {
+    position: absolute;
+    top: 4px;
+    right: -10px;
+    text-transform: uppercase;
+    padding: 16.5px 20px;
+    background-color: #fff;
+    border: 1px solid #D12136;
+    color: #D12136;
+    letter-spacing: 1.3px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: #D12136;
+        color: #fff;
+    }
+}
+
+.review__comments {
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+}
+
+.review__username {
+    color: #48494D;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 27.2px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.review__description {
+    padding-left: 22px;
+}
+
+.review__dignities-title {
+    position: relative;
+    margin-top: 14px;
+    margin-bottom: 0px;
+    font-weight: 600;
+    color: #000;
+
+    &::before {
+        position: absolute;
+        content: '+';
+        top: 2px;
+        left: -17px;
+        color: #D12136;
+    }
+}
+
+.review__dignities {
+    margin-top: 2px;
+}
+
+.review__disadvantages-title {
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #000;
+
+    &::before {
+        position: absolute;
+        content: '-';
+        top:  -4px;
+        left: -17px;
+        color: #D12136;
+        font-size: 24px;
+    }
+}
+
+.review__disadvantages {
+    margin-top: 5px;
+}
+
+.review__comment-title {
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.review__comment {
+    margin-top: 6px;
+    margin-bottom: 11px;
+}
+
+.review__rating-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.review__rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+.review__rating-item {
+    color: rgba(189, 190, 194, 0.7);
+    font-size: 22px;
+    cursor: pointer;
+    transition: .2s;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.review__rating-item:hover,
+.review__rating-item:hover ~ .review__rating-item {
+    color: #D12136;
+}
+
+.review__rating[data-total-value="1"] .review__rating-item:nth-child(n+5),
+.review__rating[data-total-value="2"] .review__rating-item:nth-child(n+4),
+.review__rating[data-total-value="3"] .review__rating-item:nth-child(n+3),
+.review__rating[data-total-value="4"] .review__rating-item:nth-child(n+2),
+.review__rating[data-total-value="5"] .review__rating-item:nth-child(n+1) {
+    color: #D12136;
+}
+
+.review__rating-conclusion {
+    color: #D12136;
+    font-size: 15px;
+    margin-top: 9px;
+    margin-left: 18px;
+}
+
+.review__feedback {
+    display: flex;
+    align-items: flex-start;
+}
+
+.review__time {
+    margin-top: 12px;
+    margin-left: 2px;
+}
+
+.review__feedback-btn {
+    border: none;
+    background-color: #fff;
+    color: #D12136;
+    margin-left: 15px;
+    margin-bottom: 18px;
+    margin-top: 13px;
+    font-size: 16px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 0.3;
+    }
+}

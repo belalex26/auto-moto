@@ -2,14 +2,44 @@ import React from 'react';
 
 const Specifications = () => {
     return (
-        <table>
-            <tr><th>Трансмиссия</th><td>Роботизированная</td></tr>
-            <tr><th>Мощность двигателя, л.с.</th><td>249</td></tr>
-            <tr><th>Тип двигателя</th><td>Бензиновый</td></tr>
-            <tr><th>Привод</th><td>Полный</td></tr>
-            <tr><th>Объем двигателя, л</th><td>2.4</td></tr>
-            <tr><th>Макс. крутящий момент</th><td>370/4500</td></tr>
-            <tr><th>Количество цилиндров</th><td>4</td></tr>
+        <table className="specifications">
+            <thead className="visually-hidden">
+                <tr className="specifications__table-titlle">
+                    <th className="specifications__row-title">Параметр</th>
+                    <td className="specifications__row-text">Значение</td>
+                </tr>
+            </thead>
+            <tbody className="specifications__table">
+                <tr className="specifications__table-row">
+                    <th className="specifications__row-title">Трансмиссия</th>
+                    <td className="specifications__row-text">Роботизированная</td>
+                </tr>
+                <tr className="specifications__table-row">
+                    <th className="specifications__row-title">Мощность двигателя, л.с.</th>
+                    <td className="specifications__row-text">249</td>
+                </tr>
+                <tr className="specifications__table-row">
+                    <th className="specifications__row-title">Тип двигателя</th>
+                    <td className="specifications__row-text">Бензиновый</td>
+                </tr>
+                <tr className="specifications__table-row">
+                    <th className="specifications__row-title">Привод</th>
+                    <td className="specifications__row-text">Полный</td>
+                </tr>
+                <tr className="specifications__table-row">
+                    <th className="specifications__row-title">Объем двигателя, л</th>
+                    <td className="specifications__row-text">2.4</td>
+                </tr>
+                <tr className="specifications__table-row">
+                    <th className="specifications__row-title">Макс. крутящий момент</th>
+                    <td className="specifications__row-text">370/4500</td>
+                </tr>
+                <tr className="specifications__table-row">
+                    <th className="specifications__row-title">Количество цилиндров</th>
+                    <td className="specifications__row-text">4</td>
+                </tr>
+            </tbody>
+            
         </table>
     );
 };

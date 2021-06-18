@@ -3,6 +3,15 @@
     font-family: 'Open Sans', 'Arial', sans-serif;
     font-weight: 600;
     font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footer__container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-left: 6.5%;
+    padding-right: 5%;
 }
 
 .footer__list {
@@ -11,10 +20,11 @@
     align-items: center;
     list-style: none;
     padding: 0;
+    margin-top: 7px;
 }
 
 .footer__link {
-    padding: 10px 34px;
+    padding: 10px 20px;
     text-decoration: none;
     color: #48494D;
 

@@ -73,13 +73,13 @@ const Slider = () => {
                 </div>
             </div>
             <div className="slider__buttons">
-                <button className="slider__buttons-prev" onClick={handlerBtnPrev}>Prev</button>
+                <button className="slider__buttons-prev" aria-label="Prev" onClick={handlerBtnPrev}></button>
                     <div className="slider__preview-list">
                         <img className="slider__img-preview" src={desktop_slide_1} alt="slider auto 1" width="128" height="80" />
                         <img className="slider__img-preview" src={desktop_slide_2} alt="slider auto 2" width="128" height="80" />
                         <img className="slider__img-preview" src={desktop_slide_3} alt="slider auto 3" width="128" height="80" />
                     </div>
-                <button className="slider__buttons-next" onClick={handlerBtnNext}>Next</button>
+                <button className="slider__buttons-next" aria-label="Next" onClick={handlerBtnNext}></button>
             </div>
         </div>
 

@@ -21,10 +21,17 @@ const Modal = ({active, setActive}) => {
                 <div className="modal__right-column">
                     <div className="modal__rating-wrap">
                         <p className="modal__rating-info">Оцените товар:</p>
+                        <div className="modal__rating" data-total-value="0">
+                            <div className="modal__rating-item" data-item-value="5">★</div>
+                            <div className="modal__rating-item" data-item-value="4">★</div>
+                            <div className="modal__rating-item" data-item-value="3">★</div>
+                            <div className="modal__rating-item" data-item-value="2">★</div>
+                            <div className="modal__rating-item" data-item-value="1">★</div>
+                        </div>
                     </div>
 
                     <label className="modal__label modal__feedback">
-                        <input className="modal__input" type="textarea" placeholder="Комментарий" rows="2" cols="80" required />
+                        <textarea className="modal__input" placeholder="Комментарий" rows="5" cols="8" required />
                     </label>
                 </div>
 

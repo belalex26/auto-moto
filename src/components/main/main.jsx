@@ -9,7 +9,8 @@ import Modal from '../modal/modal';
 
 const Main = () => {
   const [modalActive, setModalActive] = useState(false);
-  const handlerClick = () => {
+
+  const handleClickModal = () => {
     setModalActive(true)
   }
 
@@ -19,7 +20,7 @@ const Main = () => {
         <main className="main">
           <h1 className="main__title visually-hidden">Авто-мото</h1>
           <Promo />
-          <Tabs handlerClick={handlerClick}/>
+          <Tabs handleClick={handleClickModal}/>
           
         </main>
         <Footer />

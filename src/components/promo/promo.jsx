@@ -5,7 +5,7 @@ import Slider from '../slider/slider';
 const Promo = () => {
   return (
     <section className="promo">
-      <div className="container">
+      <div className="promo__container">
         <div className="promo__slider">
           <Slider/>
         </div>
@@ -16,18 +16,21 @@ const Promo = () => {
                     <p className="promo__info-text">бензин</p>
                 </li>
                 <li className="promo__info-item">
-                    <p className="promo__info-text">механика</p>
+                    <p className="promo__info-text promo__info-transmission">механика</p>
                 </li>
                 <li className="promo__info-item">
-                    <p className="promo__info-text">100 л.с</p>
+                    <p className="promo__info-text promo__info-power">100 л.с</p>
                 </li>
                 <li className="promo__info-item">
-                    <p className="promo__info-text">1.4 л</p>
+                    <p className="promo__info-text promo__info-volume">1.4 л</p>
                 </li>
             </ul>
-            <p className="promo__price">2 300 000</p>
-            <a className="promo__feedback" href="/feedback">Оставить заявку</a>
-            <a className="promo__credit" href="/credit">в кредит от 11 000 ₽</a>
+            <p className="promo__price">2 300 000 ₽</p>
+            <div className="promo__btn-control">
+              <a className="promo__feedback" href="/feedback">Оставить заявку</a>
+              <a className="promo__credit" href="/credit">в кредит от 11 000 ₽</a>
+            </div>
+
         </div>
       </div>  
     </section>
