@@ -1,11 +1,16 @@
 import React from 'react';
 
-const Modal = ({active, setActive}) => {
+const Modal = ({active, setActive, newReview}) => {
+
+  const newReviewItem = () => {
+      
+  }
+
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <section className={active ? "modal__callback active" : "modal__callback"} onClick={evt => evt.stopPropagation()}>
             <h2 className="modal__title">Оставить отзыв</h2>
-            <form className="modal__callback-form" name="callback" method="get" action="#">
+            <form className="modal__callback-form" name="callback" method="get" action="#" onChange={newReview}>
                 <div className="modal__left-column">
                     <label className="modal__label modal__name">
                         <input className="modal__input" type="text" placeholder="Имя" required />
@@ -35,7 +40,7 @@ const Modal = ({active, setActive}) => {
                     </label>
                 </div>
 
-                <button className="modal__submit" type="submit">Оставить отзыв</button>
+                <button className="modal__submit" type="submit" onClick={newReviewItem}>Оставить отзыв</button>
             </form>
             <button className="modal__close" onClick={() => setActive(false)} type="button" aria-label="Закрыть"></button>
         </section>

@@ -7,7 +7,7 @@ const NoPage = () => {
   return (
     <>
       <Header />
-      <main className="no-page__content">
+      <main className="no-page">
         <h1 className="no-page__title">404 Упс, похоже, такой страницы нет</h1>
       </main>
       <Footer />

@@ -25,7 +25,11 @@ const Promo = () => {
                     <p className="promo__info-text promo__info-volume">1.4 л</p>
                 </li>
             </ul>
-            <p className="promo__price">2 300 000 ₽</p>
+            <div className="promo__price">
+            <p className="promo__price-sale">2 300 000 ₽</p>
+              <p className="promo__price-full">2 400 000 ₽</p>
+            </div>
+
             <div className="promo__btn-control">
               <a className="promo__feedback" href="/feedback">Оставить заявку</a>
               <a className="promo__credit" href="/credit">в кредит от 11 000 ₽</a>

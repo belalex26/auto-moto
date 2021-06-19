@@ -50,7 +50,9 @@ const Tabs = ({handleClickModal}) => {
                         <Specifications/>
                     </div>
                     <div className="tabs__content-item" id="reviews">
-                        <Reviews handleClickModal={handleClickModal}/>
+                        <Reviews
+                            handleClickModal={handleClickModal}
+                        />
                     </div>
                     <div className="tabs__content-item" id="contacts">
                         <Contacts />

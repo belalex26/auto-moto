@@ -6,8 +6,8 @@
     max-width: 85%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 53% 43%;
-    gap: 3.1%;
+    grid-template-columns: 600px 44%;
+    gap: 5.1%;
     align-items: start;
 }
 
@@ -15,20 +15,32 @@
     font-size: 30px;
     font-weight: 700;
     margin-top: -5px;
-    margin-bottom: 46px;
+    margin-bottom: 30px;
 }
 
 .promo__slider {
     width: 600px;
 }
 
+.promo__content {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
 .promo__info {
     list-style: none;
-    padding-left: 12px;
+    padding-left: 0px;
     width: 61%;
     margin-bottom: 0;
-    display: grid;
-    grid-template-columns: 22% 31% 28% 19%;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.promo__info-item {
+    margin-right: 1%;
+    padding-left: 5px;
+    padding-right: 5px;
+
 }
 
 .promo__info-text {
@@ -82,34 +94,45 @@
 }
 
 .promo__price {
-    position: relative;
-    font-size: 35px;
-    font-weight: 700;
-    margin-top: 21px;
-    margin-bottom: 38px;
+    width: 76%;
+    margin-top: 8px;
+    margin-bottom: 26px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    align-self: flex-start;
 
-    &::before {
-        position: absolute;
-        content: '2 400 000 ₽';
-        top: 10px;
-        left: 219px;
-        color: #48494D;
-        opacity: 0.5;
-        font-size: 21.5px;
-        font-weight: 400;
-    }
+    color: #48494D;
+}
+
+.promo__price-full {
+    position: relative;
+    font-size: 21.5px;
+    font-weight: 400;
+    opacity: 0.5;
 
     &::after {
         position: absolute;
         content: '';
-        top: -39px;
-        left: 278px;
+        top: -49px;
+        left: 63px;
         height: 128px;
         transform: rotate(85deg);
         border: 0.5px solid #48494D;
         background-color: #48494D;
-        opacity: 0.2;
+        opacity: 0.4;
     }
+}
+
+.promo__price-sale {
+
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 34px;
 }
 
 .promo__slider {
