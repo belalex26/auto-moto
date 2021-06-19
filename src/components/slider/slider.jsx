@@ -6,31 +6,33 @@ import desktop_slide_3 from '../../images/desktop_slide_3.jpg';
 
 const Slider = () => {
     const slider = useRef(null);
-    const [items] = useState([1, 2, 3]);
+    const [items] = useState([1, 2, 3, 4]);
     const [prev, setPrev] = useState(true);
     const [next, setNext] = useState(false);
 
     let position = 0;
 
     const prevHandler = () => {
+        position = position + 600
+
+            setPrev(false)
+
+            slider.current.childNodes.forEach((element) => {
+                element.style = `transform: translateX(${position}px)`
+            })
+
         if (position === 0) {
             setPrev(false)
-        } else {
-            setPrev(true)
-
-            position += 600;
-            slider.current.childNodes.forEach((element) => {
-                element.style= `transform: translateX(${position}px)`
-            })
         }
     }
 
     const nextHandler = () => {
         if (position === -(items.length - 1) * 600) {
             setNext(true)
+            setPrev(false)
           
         } else {
-            setNext(false)
+            // setNext(false)
             setPrev(false)
 
             position -= 600;
