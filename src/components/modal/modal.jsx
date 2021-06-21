@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const ESC_PRESS = 27;
 
@@ -120,6 +121,11 @@ const Modal = ({active, setActive}) => {
   </div>
   );
 
+};
+
+Modal.prototype = {
+    active: PropTypes.object,
+    setActive: PropTypes.func,
 };
 
 export default Modal;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Specifications from '../specifications/specifications';
 import Reviews from '../reviews/reviews';
@@ -64,4 +65,9 @@ const Tabs = ({handleClickModal}) => {
 
     );
 };
+
+Tabs.prototype = {
+    handleClickModal: PropTypes.func,
+};
+
 export default Tabs;

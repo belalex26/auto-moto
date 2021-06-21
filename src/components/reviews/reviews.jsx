@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Reviews = ({handleClickModal}) => {
     
@@ -43,4 +44,9 @@ const Reviews = ({handleClickModal}) => {
         </div>
     );
 };
+
+Reviews.prototype = {
+    handleClickModal: PropTypes.func,
+};
+
 export default Reviews;
