@@ -124,7 +124,7 @@ const Modal = ({active, setActive}) => {
 };
 
 Modal.prototype = {
-    active: PropTypes.object,
+    active: PropTypes.bool.isRequired,
     setActive: PropTypes.func,
 };
 

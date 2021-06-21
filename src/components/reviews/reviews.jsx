@@ -9,6 +9,7 @@ const Reviews = ({handleClickModal}) => {
         <div className="review">
             {
                 reviewList.map((elem, id) => {
+                    
                     return (
 
                         <div className="review__comments" key={id}>
