@@ -5,6 +5,7 @@ import Main from '../main/main';
 import NoPage from '../no-page/no-page';
 
 const App = () => {
+
     return (
       <BrowserRouter>
         <Switch>

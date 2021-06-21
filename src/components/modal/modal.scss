@@ -67,6 +67,37 @@
     }
 }
 
+.modal__name,
+.modal__feedback {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: '*';
+        color: #D12136;
+        font-size: 20px;
+        top: 7px;
+        left: 10px;
+    }
+}
+
+.modal__name {
+    &::after {
+        position: absolute;
+        content: 'Пожалуйста, заполните поле';
+        color: #D12136;
+        font-size: 13px;
+        font-weight: 600;
+        top: -22px;
+        left: 0px;
+    }
+}
+
+.modal__name input:invalid,
+.modal__feedback input:invalid {
+    border: 1px solid #D12136;
+}
+
 .modal__callback-form {
     display: grid;
     grid-template-columns: 46% 46%;
@@ -97,29 +128,58 @@
 }
 
 .modal__rating {
-    display: inline-flex;
+    position: relative;
+    font-size: 40px;
+    display: inline-block;
+
+    &::before {
+        content: "★★★★★";
+        display: block;
+    }
+}
+
+.modal__rating-items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
     flex-direction: row-reverse;
+    overflow: hidden;
 }
 
 .modal__rating-item {
-    color: rgba(189, 190, 194, 0.7);
-    font-size: 33px;
-    cursor: pointer;
-    transition: .2s;
-    padding-left: 3px;
-    padding-right: 3px;
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    visibility: hidden;
 }
 
-.modal__rating-item:hover,
-.modal__rating-item:hover ~ .modal__rating-item {
+.modal__rating-label {
+    flex: 0 0 20%;
+    height: 100%;
+    cursor: pointer;
+    color: rgba(189, 190, 194, 1);
+
+    &::before {
+        content: "★";
+        display: block;
+        transition: color 0.3s ease 0s;
+    }
+}
+
+.modal__rating-label:hover,
+.modal__rating-label:hover ~ .modal__rating-label,
+.modal__rating-label:checked ~ .modal__rating-label:hover {
     color: #D12136;
 }
 
-.modal__rating[data-total-value="1"] .modal__rating-item:nth-child(n+5),
-.modal__rating[data-total-value="2"] .modal__rating-item:nth-child(n+4),
-.modal__rating[data-total-value="3"] .modal__rating-item:nth-child(n+3),
-.modal__rating[data-total-value="4"] .modal__rating-item:nth-child(n+2),
-.modal__rating[data-total-value="5"] .modal__rating-item:nth-child(n+1) {
+.modal__rating-item:checked,
+.modal__rating-item:checked ~ .modal__rating-label {
     color: #D12136;
 }
 
