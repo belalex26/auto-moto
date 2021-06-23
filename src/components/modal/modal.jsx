@@ -1,8 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import {ESC_PRESS, reviews} from '../../const';
+// import ESC_PRESS from '../../const';
+//import reviews from '../../const';
 import Rating from '../rating/rating';
+
+const ESC_PRESS = 27;
+
+const reviews = [
+    {
+        userName: 'Борис Иванов',
+        dignities: 'мощность, внешний вид',
+        disadvantages: 'Слабые тормозные колодки (пришлось заменить)',
+        rating: 3,
+        feedback: 'Взяли по трейд-ин, на выгодных условиях у дилера. Стильная внешка и крут по базовым характеристикам. Не думал, что пересяду на китайский автопром, но сейчас гоняю и понимаю, что полностью доволен.'
+    }, 
+    {
+        userName: 'Марсель Исмагилов',
+        dignities: 'Cтиль, комфорт, управляемость',
+        disadvantages: 'Дорогой ремонт и обслуживание',
+        rating: 3,
+        feedback: 'Дизайн отличный, управление просто шикарно, ощущения за рулём такой машины особые. Но ремонт очень дорогой. Пару месяцев назад пришлось менять двигатель. По стоимости вышло как новый автомобиль. Так что, если покупать эту машину, надо быть готовым к большим расходам на обслуживание.'
+    }
+];
+
 
 const Modal = ({active, setActive}) => {
     const [items, setItems] = useState(JSON.parse(localStorage.getItem('reviews')) || '[]')
@@ -11,6 +32,12 @@ const Modal = ({active, setActive}) => {
     const [disadvantages, setDisadvantages] = useState('')
     const [rating, setRating] = useState(3)
     const [feedback, setFeedback] = useState('')
+
+   /* let userNameInput = React.createRef(); 
+    let dignitiesInput = React.createRef(); 
+    let disadvantagesInput = React.createRef(); 
+    let ratingInput = React.createRef(); 
+    let feedbackInput = React.createRef(); */
 
     useEffect(() => {
         setItems(reviews);
@@ -40,11 +67,9 @@ const Modal = ({active, setActive}) => {
         onCloseModal();
     }
 
-    const onChangeUserName = (e) => {
-        setUserName(e.target.value)
-    }
 
-    const onAddItemClick = () => {
+
+    const onAddItemClick = (evt) => {
 
         const newItem = {
             userName,
@@ -61,7 +86,7 @@ const Modal = ({active, setActive}) => {
     <div className={active ? "modal modal--active" : "modal"} onClick={() => setActive(false)}>
         <section className={active ? "modal__callback modal__callback--active" : "modal__callback"} onClick={evt => evt.stopPropagation()}>
             <h2 className="modal__title">Оставить отзыв</h2>
-            <form className="modal__callback-form" name="callback" method="get" action="#" onSubmit={onSubmit}>
+            <form className="modal__callback-form" name="callback" action="#" onSubmit={onSubmit}>
                 <div className="modal__left-column">
                     <label className="modal__label modal__name">
                         <input className="modal__input" type="text" name="userName" placeholder="Имя" required autoFocus minLength="2" onChange={(e) => setUserName(e.target.value)} />
