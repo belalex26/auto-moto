@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import Logo from '../logo/logo';
 
 const Menu = () => {
@@ -7,24 +9,24 @@ const Menu = () => {
         <Logo />
         <ul className="menu__list">
           <li className="menu__item">
-            <a className="menu__link" href="/auto">
+            <Link className="menu__link" to="/auto">
               Автомобили
-            </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="/contacts">
+            <Link className="menu__link" to="/contacts">
               Контакты
-            </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="/services">
+            <Link className="menu__link" to="/services">
               Услуги
-            </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="/job">
+            <Link className="menu__link" to="/job">
               Вакансии
-            </a>
+            </Link>
           </li>
       </ul>
     </nav>

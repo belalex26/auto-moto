@@ -3,8 +3,9 @@
 }
 
 .tabs__container {
-    max-width: 85%;
     margin: 0 auto;
+    padding-left: 19.5%;
+    padding-right: 19%;
 }
 
 .tabs__triggers {
@@ -37,13 +38,11 @@
     background-color: #fff;
 }
 
-.tabs__triggers-item--active,
-.tabs__triggers-item--def {
+.tabs__triggers-item--active {
     background-color: #D12136;
     color: #fff;
 }
 
-.tabs__content-item--active,
-.tabs__content-item--def {
+.tabs__content-item--active {
     display: block;
 }

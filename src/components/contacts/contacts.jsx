@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Maps from '../maps/maps';
+import WrappedMap from '../maps/maps';
+
+const GOOGLE_MAP_KEY = 'AIzaSyAtXraCKerhmWfuQ6GQz40TVnyr6Ocep2s';
 
 const Contacts = () => {
   return (
@@ -17,7 +19,12 @@ const Contacts = () => {
             <a className="contacts__info-email-link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
         </div>
         <div className="contacts__map">
-          <Maps />
+          <WrappedMap
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${GOOGLE_MAP_KEY}`}
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `271px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+          />
         </div>
       </section>
   );

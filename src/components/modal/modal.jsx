@@ -1,24 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const ESC_PRESS = 27;
-
-const reviews = [
-    {
-        userName: 'Борис Иванов',
-        dignities: 'мощность, внешний вид',
-        disadvantages: 'Слабые тормозные колодки (пришлось заменить)',
-        rating: 3,
-        feedback: 'Взяли по трейд-ин, на выгодных условиях у дилера. Стильная внешка и крут по базовым характеристикам. Не думал, что пересяду на китайский автопром, но сейчас гоняю и понимаю, что полностью доволен.'
-    }, 
-    {
-        userName: 'Марсель Исмагилов',
-        dignities: 'Cтиль, комфорт, управляемость',
-        disadvantages: 'Дорогой ремонт и обслуживание',
-        rating: 3,
-        feedback: 'Дизайн отличный, управление просто шикарно, ощущения за рулём такой машины особые. Но ремонт очень дорогой. Пару месяцев назад пришлось менять двигатель. По стоимости вышло как новый автомобиль. Так что, если покупать эту машину, надо быть готовым к большим расходам на обслуживание.'
-    }
-]
+import {ESC_PRESS, reviews} from '../../const';
+import Rating from '../rating/rating';
 
 const Modal = ({active, setActive}) => {
     const [items, setItems] = useState(JSON.parse(localStorage.getItem('reviews')) || '[]')
@@ -51,12 +35,16 @@ const Modal = ({active, setActive}) => {
         setActive(false)
     }
 
-    const handleSubmit = (evt) => {
+    const onSubmit = (evt) => {
         evt.preventDefault();
         onCloseModal();
     }
 
-    const addItem = () => {
+    const onChangeUserName = (e) => {
+        setUserName(e.target.value)
+    }
+
+    const onAddItemClick = () => {
 
         const newItem = {
             userName,
@@ -70,10 +58,10 @@ const Modal = ({active, setActive}) => {
     } 
       
   return (
-    <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-        <section className={active ? "modal__callback active" : "modal__callback"} onClick={evt => evt.stopPropagation()}>
+    <div className={active ? "modal modal--active" : "modal"} onClick={() => setActive(false)}>
+        <section className={active ? "modal__callback modal__callback--active" : "modal__callback"} onClick={evt => evt.stopPropagation()}>
             <h2 className="modal__title">Оставить отзыв</h2>
-            <form className="modal__callback-form" name="callback" method="get" action="#" onSubmit={handleSubmit}>
+            <form className="modal__callback-form" name="callback" method="get" action="#" onSubmit={onSubmit}>
                 <div className="modal__left-column">
                     <label className="modal__label modal__name">
                         <input className="modal__input" type="text" name="userName" placeholder="Имя" required autoFocus minLength="2" onChange={(e) => setUserName(e.target.value)} />
@@ -89,24 +77,7 @@ const Modal = ({active, setActive}) => {
                 <div className="modal__right-column">
                     <div className="modal__rating-wrap">
                         <p className="modal__rating-info">Оцените товар:</p>
-                        <div className="modal__rating">
-                            <div className="modal__rating-items">
-                                <input type="radio" className="modal__rating-item" id="modal__rating-5" name="rating" value="5" onChange={(e) => setRating(e.target.value)}/>
-                                <label htmlFor="modal__rating-5" className="modal__rating-label" />
-
-                                <input type="radio" className="modal__rating-item" id="modal__rating-4" name="rating" value="4" onChange={(e) => setRating(e.target.value)}/>
-                                <label htmlFor="modal__rating-4" className="modal__rating-label" />
-
-                                <input type="radio" className="modal__rating-item" id="modal__rating-3" name="rating" value="3" onChange={(e) => setRating(e.target.value)}/>
-                                <label htmlFor="modal__rating-3" className="modal__rating-label" />
-
-                                <input type="radio" className="modal__rating-item" id="modal__rating-2" name="rating" value="2" onChange={(e) => setRating(e.target.value)}/>
-                                <label htmlFor="modal__rating-2" className="modal__rating-label" />
-
-                                <input type="radio" className="modal__rating-item" id="modal__rating-1" name="rating" value="1" onChange={(e) => setRating(e.target.value)}/>
-                                <label htmlFor="modal__rating-1" className="modal__rating-label" />
-                            </div>
-                        </div>
+                        <Rating setRating={setRating} />
                     </div>
 
                     <label className="modal__label modal__feedback">
@@ -114,7 +85,7 @@ const Modal = ({active, setActive}) => {
                     </label>
                 </div>
 
-                <button className="modal__submit" type="submit" onClick={addItem}>Оставить отзыв</button>
+                <button className="modal__submit" type="submit" onClick={onAddItemClick}>Оставить отзыв</button>
             </form>
             <button className="modal__close" onClick={() => setActive(false)} type="button" aria-label="Закрыть"></button>
         </section>
@@ -125,7 +96,8 @@ const Modal = ({active, setActive}) => {
 
 Modal.prototype = {
     active: PropTypes.bool.isRequired,
-    setActive: PropTypes.func,
+    setActive: PropTypes.func.isRequired,
+    setRating: PropTypes.func.isRequired
 };
 
 export default Modal;

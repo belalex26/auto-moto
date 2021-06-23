@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import Slider from '../slider/slider';
 
@@ -31,8 +32,8 @@ const Promo = () => {
             </div>
 
             <div className="promo__btn-control">
-              <a className="promo__feedback" href="/feedback">Оставить заявку</a>
-              <a className="promo__credit" href="/credit">в кредит от 11 000 ₽</a>
+              <Link className="promo__feedback" to="/feedback">Оставить заявку</Link>
+              <Link className="promo__credit" to="/credit">в кредит от 11 000 ₽</Link>
             </div>
 
         </div>

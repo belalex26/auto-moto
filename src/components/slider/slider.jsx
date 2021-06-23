@@ -2,27 +2,28 @@ import React, { useRef, useState } from 'react';
 import desktop_slide_1 from '../../images/desktop_slide_1.jpg';
 import desktop_slide_2 from '../../images/desktop_slide_2.jpg';
 import desktop_slide_3 from '../../images/desktop_slide_3.jpg';
+
+const ITEMS_WIDTH = 600;
+const ITEMS_COUNT = 3;
+const SLIDE_TO_SHOW = 1;
+const SLLIDE_TO_SCROLL = 1;
+
+let position = 0;
+
+const movePosition = SLIDE_TO_SHOW * ITEMS_WIDTH;
  
 
 const Slider = () => {
-
-    const itemsWidth = 600;
-    const itemsCount = 3;
-    const slideToShow = 1;
-    const slideToScoll = 1;
-    const movePosition = slideToShow * itemsWidth;
 
     const slider = useRef(null);
    
     const [prev, setPrev] = useState(true);
     const [next, setNext] = useState(false);
 
-    let position = 0;
-
     const prevHandler = () => {
-        const itemsLeft = Math.abs(position) / itemsWidth;
+        const itemsLeft = Math.abs(position) / ITEMS_WIDTH;
 
-        position += itemsLeft >= slideToScoll ? movePosition : itemsLeft * itemsWidth;
+        position += itemsLeft >= SLLIDE_TO_SCROLL ? movePosition : itemsLeft * ITEMS_WIDTH;
 
         changePosition();
         checkButtons();
@@ -30,9 +31,9 @@ const Slider = () => {
 
     
     const nextHandler = () => {
-        const itemsLeft = itemsCount - (Math.abs(position) + slideToShow * itemsWidth) / itemsWidth;
+        const itemsLeft = ITEMS_COUNT - (Math.abs(position) + SLIDE_TO_SHOW * ITEMS_WIDTH) / ITEMS_WIDTH;
 
-        position -= itemsLeft >= slideToScoll ? movePosition : itemsLeft * itemsWidth;
+        position -= itemsLeft >= SLLIDE_TO_SCROLL ? movePosition : itemsLeft * ITEMS_WIDTH;
 
         changePosition();
         checkButtons();
@@ -54,7 +55,7 @@ const Slider = () => {
             setPrev(false);
         }
 
-        if (position <= -(itemsCount - slideToShow)*itemsWidth) {
+        if (position <= -(ITEMS_COUNT - SLIDE_TO_SHOW)*ITEMS_WIDTH) {
             setNext(true);
             setPrev(false);
         }

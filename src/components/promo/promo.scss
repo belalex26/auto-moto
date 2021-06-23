@@ -3,12 +3,10 @@
 }
 
 .promo__container {
-    max-width: 85%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 600px 44%;
-    gap: 5.1%;
-    align-items: start;
+    padding-left: 19%;
+    padding-right: 2%;
+    display: flex;
 }
 
 .promo__title {
@@ -23,15 +21,14 @@
 }
 
 .promo__content {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 78%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
 }
 
 .promo__info {
     list-style: none;
     padding-left: 0px;
-    width: 61%;
     margin-bottom: 0;
     flex-wrap: wrap;
     display: flex;
@@ -95,7 +92,6 @@
 }
 
 .promo__price {
-    width: 76%;
     margin-top: 8px;
     margin-bottom: 26px;
     display: flex;
@@ -172,6 +168,7 @@
     text-decoration: none;
     font-size: 14px;
     margin-bottom: 16px;
+    text-align: center;
 
     &:hover,
     &:focus,
@@ -184,7 +181,7 @@
 
 .promo__credit {
     text-transform: uppercase;
-    padding: 16.5px 20px;
+    padding: 16.5px 5.5%;
     background-color: #fff;
     border: 1px solid #D12136;
     color: #D12136;
@@ -192,6 +189,7 @@
     font-weight: 600;
     text-decoration: none;
     font-size: 14px;
+    text-align: center;
 
     &:hover,
     &:focus,

@@ -4,7 +4,7 @@ const Specifications = () => {
     return (
         <table className="specifications">
             <thead className="visually-hidden">
-                <tr className="specifications__table-titlle">
+                <tr className="specifications__table-title">
                     <th className="specifications__row-title">Параметр</th>
                     <td className="specifications__row-text">Значение</td>
                 </tr>
