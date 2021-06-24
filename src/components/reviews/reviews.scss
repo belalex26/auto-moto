@@ -1,15 +1,14 @@
 .review {
     position: relative;
     font-size: 15px;
-    margin-top: 32px;
-    margin-left: 5px;
-    padding-bottom: 117px;
+    margin-top: 38px;
+    padding-bottom: 118px;
 }
 
 .reviews__btn {
     position: absolute;
-    top: 4px;
-    right: -10px;
+    top: 0px;
+    right: 12px;
     text-transform: uppercase;
     padding: 16.5px 20px;
     background-color: #fff;
@@ -31,6 +30,8 @@
 
 .review__comments {
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 31px;
+    margin-top: -9px;
 }
 
 .review__username {
@@ -57,7 +58,7 @@
         position: absolute;
         content: '+';
         top: 2px;
-        left: -17px;
+        left: -21px;
         color: #D12136;
     }
 }
@@ -76,7 +77,7 @@
         position: absolute;
         content: '-';
         top:  -4px;
-        left: -17px;
+        left: -21px;
         color: #D12136;
         font-size: 24px;
     }
@@ -84,12 +85,14 @@
 
 .review__disadvantages {
     margin-top: 5px;
+    margin-bottom: 13px;
 }
 
 .review__comment-title {
     color: #000;
     font-weight: 600;
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .review__comment {

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-// import ESC_PRESS from '../../const';
-//import reviews from '../../const';
 import Rating from '../rating/rating';
 
 const ESC_PRESS = 27;
@@ -27,17 +25,27 @@ const reviews = [
 
 const Modal = ({active, setActive}) => {
     const [items, setItems] = useState(JSON.parse(localStorage.getItem('reviews')) || '[]')
-    const [userName, setUserName] = useState('')
-    const [dignities, setDignities] = useState('')
-    const [disadvantages, setDisadvantages] = useState('')
-    const [rating, setRating] = useState(3)
-    const [feedback, setFeedback] = useState('')
+    const [userName, setUserName] = useState ('')
+    const [dignities, setDignities] = useState ('')
+    const [disadvantages, setDisadvantages] = useState ('')
+    const [rating, setRating]  = useState ('0')
+    const [feedback, setFeedback]  = useState ('')
 
-   /* let userNameInput = React.createRef(); 
-    let dignitiesInput = React.createRef(); 
-    let disadvantagesInput = React.createRef(); 
-    let ratingInput = React.createRef(); 
-    let feedbackInput = React.createRef(); */
+    const [userNameDirty, setUserNameDirty] = useState(false)
+    const [feedbackDirty, setFeedbackDirty] = useState(false)
+
+    const [userNameError, setUserNameError] = useState('Пожалуйста, заполните поле')
+    const [feedbackError, setFeedbackError] = useState('Пожалуйста, заполните поле')
+
+    const [formValid, setFormValid] = useState(false)
+    
+    useEffect(() => {
+        if (userNameError || feedbackError) {
+            setFormValid(false)
+        } else {
+            setFormValid(true)
+        }
+     }, [userNameError, feedbackError]);
 
     useEffect(() => {
         setItems(reviews);
@@ -52,24 +60,61 @@ const Modal = ({active, setActive}) => {
         return () => document.removeEventListener('keydown', onClose)
     })
 
+    const onBlur = (evt) => {
+        // eslint-disable-next-line default-case
+        switch(evt.target.name) {
+            case 'userName':
+                setUserNameDirty(true)
+                break
+            case 'feedback':
+                setFeedbackDirty(true)
+                break
+        }
+    }
+
+    const onChangeUserName = (evt) => {
+        setUserName(evt.target.value)
+        if (evt.target.value.length < 2) {
+            setUserNameError('Пожалуйста, заполните поле')
+            if (!evt.target.value) {
+                setUserNameError('Пожалуйста, заполните поле')
+            }
+        } else {
+            setUserNameError('')
+        }
+    }
+    const onChangeFeedback = (evt) => {
+        setFeedback(evt.target.value)
+        if (evt.target.value.length < 2) {
+            setFeedbackError('Пожалуйста, заполните поле')
+            if (!evt.target.value) {
+                setUserNameError('Пожалуйста, заполните поле')
+            }
+        } else {
+            setFeedbackError('')
+        }
+    }
+
     const onClose = (evt) => {
         if (evt.keyCode === ESC_PRESS) {
             setActive(false)
         }
     }
 
-    const onCloseModal = () => {
+    const onSubmit = (evt) => {
+        evt.preventDefault();
         setActive(false)
     }
 
-    const onSubmit = (evt) => {
-        evt.preventDefault();
-        onCloseModal();
+    const resetInput = () => {
+        setUserName('')
+        setDisadvantages('')
+        setDignities('')
+        setRating('0')
+        setFeedback('')
     }
 
-
-
-    const onAddItemClick = (evt) => {
+    const onAddItemClick = () => {
 
         const newItem = {
             userName,
@@ -80,37 +125,41 @@ const Modal = ({active, setActive}) => {
         }
         
         setItems([...items, newItem])
-    } 
+        resetInput();
+    }
       
   return (
     <div className={active ? "modal modal--active" : "modal"} onClick={() => setActive(false)}>
         <section className={active ? "modal__callback modal__callback--active" : "modal__callback"} onClick={evt => evt.stopPropagation()}>
             <h2 className="modal__title">Оставить отзыв</h2>
-            <form className="modal__callback-form" name="callback" action="#" onSubmit={onSubmit}>
+            <form className="modal__callback-form" onSubmit={onSubmit} action="#">
                 <div className="modal__left-column">
+                  
                     <label className="modal__label modal__name">
-                        <input className="modal__input" type="text" name="userName" placeholder="Имя" required autoFocus minLength="2" onChange={(e) => setUserName(e.target.value)} />
+                        {(userNameDirty && userNameError) && <span className="modal__error">{userNameError}</span>}
+                        <input className="modal__input" type="text" name="userName" placeholder="Имя" value={userName} onBlur={(evt) => onBlur(evt)} onChange={(evt) => onChangeUserName(evt)} />
                     </label>
                     <label className="modal__label modal__dignities">
-                        <input className="modal__input" type="text" name="dignities" placeholder="Достоинства" onChange={(e) => setDignities(e.target.value)} />
+                        <input className="modal__input" type="text" name="dignities" placeholder="Достоинства" value={dignities} onChange={(evt) => setDignities(evt.target.value)}  />
                     </label>
                     <label className="modal__label modal__disadvantages">
-                        <input className="modal__input" type="text" name="disadvantages" placeholder="Недостатки" onChange={(e) => setDisadvantages(e.target.value)} />
+                        <input className="modal__input" type="text" name="disadvantages" placeholder="Недостатки" value={disadvantages} onChange={(evt) => setDisadvantages(evt.target.value)} />
                     </label>
                 </div>
 
                 <div className="modal__right-column">
                     <div className="modal__rating-wrap">
                         <p className="modal__rating-info">Оцените товар:</p>
-                        <Rating setRating={setRating} />
+                       <Rating rating={rating} setRating={setRating} />
                     </div>
 
                     <label className="modal__label modal__feedback">
-                        <textarea className="modal__input" placeholder="Комментарий" name="feedback" rows="5" cols="8" required minLength="5" onChange={(e) => setFeedback(e.target.value)} />
+                        {(feedbackDirty && feedbackError) && <span className="modal__error">{feedbackError}</span>}
+                        <textarea className="modal__input" placeholder="Комментарий" name="feedback" rows="5" cols="8" value={feedback} onBlur={(evt) => onBlur(evt)} onChange={(evt) => onChangeFeedback(evt)}/>
                     </label>
                 </div>
 
-                <button className="modal__submit" type="submit" onClick={onAddItemClick}>Оставить отзыв</button>
+                <button className="modal__submit" type="submit" onClick={onAddItemClick} disabled={!formValid}>Оставить отзыв</button>
             </form>
             <button className="modal__close" onClick={() => setActive(false)} type="button" aria-label="Закрыть"></button>
         </section>
@@ -122,6 +171,7 @@ const Modal = ({active, setActive}) => {
 Modal.prototype = {
     active: PropTypes.bool.isRequired,
     setActive: PropTypes.func.isRequired,
+    rating: PropTypes.number.isRequired,
     setRating: PropTypes.func.isRequired
 };
 

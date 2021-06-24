@@ -61,8 +61,11 @@
     min-width: 300px;
 
     &:hover,
-    &:focus,
     &:active {
+        border: 1px solid rgba(72, 73, 77, 0.7);
+    }
+
+    &:focus {
         border: 1px solid rgba(72, 73, 77, 0.7);
     }
 }
@@ -81,20 +84,16 @@
     }
 }
 
-.modal__name {
-    &::after {
-        position: absolute;
-        content: 'Пожалуйста, заполните поле';
-        color: #D12136;
-        font-size: 13px;
-        font-weight: 600;
-        top: -22px;
-        left: 0px;
-    }
+.modal__error {
+    position: absolute;
+    color: #D12136;
+    font-size: 13px;
+    font-weight: 600;
+    top: -22px;
+    left: 0px;
 }
 
-.modal__name input:invalid,
-.modal__feedback input:invalid {
+.modal__label .modal__error ~ .modal__input {
     border: 1px solid #D12136;
 }
 

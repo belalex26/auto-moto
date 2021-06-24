@@ -20,9 +20,7 @@ const LOCATION = {
       <Marker
         position={LOCATION}
       >
-
       </Marker>
-
     </GoogleMap>
   )
 }

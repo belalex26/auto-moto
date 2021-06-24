@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 
 import Specifications from '../specifications/specifications';
 import Reviews from '../reviews/reviews';
@@ -29,8 +28,7 @@ const Tabs = () => {
                         <Specifications/>
                     </div>
                     <div className={activeTabs === 2 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="reviews">
-                        <Reviews
-                            handleClickModal />
+                        <Reviews />
                     </div>
                     <div className={activeTabs === 3 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="contacts">
                         <Contacts />
@@ -43,8 +41,5 @@ const Tabs = () => {
     );
 };
 
-Tabs.prototype = {
-    handleClickModal: PropTypes.func,
-};
 
 export default Tabs;
