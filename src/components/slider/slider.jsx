@@ -1,39 +1,37 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef} from 'react';
 import desktop_slide_1 from '../../images/desktop_slide_1.jpg';
 import desktop_slide_2 from '../../images/desktop_slide_2.jpg';
 import desktop_slide_3 from '../../images/desktop_slide_3.jpg';
 
+import SliderHoc from '../../hoc/slider-hoc';
+
 const ITEMS_WIDTH = 600;
 const ITEMS_COUNT = 3;
 const SLIDE_TO_SHOW = 1;
-const SLLIDE_TO_SCROLL = 1;
+const SLIDE_TO_SCROLL = 1;
 
 let position = 0;
 
 const movePosition = SLIDE_TO_SHOW * ITEMS_WIDTH;
- 
 
-const Slider = () => {
+const Slider = ({...props}) => {
+    console.log(props);
 
     const slider = useRef(null);
-   
-    const [prev, setPrev] = useState(true);
-    const [next, setNext] = useState(false);
 
-    const prevHandler = () => {
+    const onButtonPrevClick = () => {
         const itemsLeft = Math.abs(position) / ITEMS_WIDTH;
 
-        position += itemsLeft >= SLLIDE_TO_SCROLL ? movePosition : itemsLeft * ITEMS_WIDTH;
+        position += itemsLeft >= SLIDE_TO_SCROLL ? movePosition : itemsLeft * ITEMS_WIDTH;
 
         changePosition();
         checkButtons();
     }
-
     
-    const nextHandler = () => {
+    const onButtonNextClick = () => {
         const itemsLeft = ITEMS_COUNT - (Math.abs(position) + SLIDE_TO_SHOW * ITEMS_WIDTH) / ITEMS_WIDTH;
 
-        position -= itemsLeft >= SLLIDE_TO_SCROLL ? movePosition : itemsLeft * ITEMS_WIDTH;
+        position -= itemsLeft >= SLIDE_TO_SCROLL ? movePosition : itemsLeft * ITEMS_WIDTH;
 
         changePosition();
         checkButtons();
@@ -48,16 +46,16 @@ const Slider = () => {
 
     const checkButtons = () => {
         if (position === 0) {
-            setPrev(true);
-            setNext(false);
+            props.onSetPrev(true);
+            props.onSetNext(false);
 
         } else {
-            setPrev(false);
+            props.onSetPrev(false);
         }
 
         if (position <= -(ITEMS_COUNT - SLIDE_TO_SHOW)*ITEMS_WIDTH) {
-            setNext(true);
-            setPrev(false);
+            props.onSetNext(true);
+            props.onSetPrev(false);
         }
 
     }
@@ -83,16 +81,16 @@ const Slider = () => {
             </div>
 
             <div className="slider__buttons">
-                <button className="slider__buttons-prev" aria-label="Prev" onClick={prevHandler} disabled={prev}></button>
+                <button className="slider__buttons-prev" aria-label="Prev" onClick={onButtonPrevClick} disabled={props.prev}></button>
                     <div className="slider__preview-list">
                         <img className="slider__img-preview" src={desktop_slide_1} alt="slider auto 1" width="128" height="80" />
                         <img className="slider__img-preview" src={desktop_slide_2} alt="slider auto 2" width="128" height="80" />
                         <img className="slider__img-preview" src={desktop_slide_3} alt="slider auto 3" width="128" height="80" />
                     </div>
-                <button className="slider__buttons-next" aria-label="Next" onClick={nextHandler} disabled={next}></button>
+                <button className="slider__buttons-next" aria-label="Next" onClick={onButtonNextClick} disabled={props.next}></button>
             </div>
         </div>
     )
 };
 
-export default Slider;
+export default SliderHoc(Slider);

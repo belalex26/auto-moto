@@ -1,36 +1,34 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import Specifications from '../specifications/specifications';
 import Reviews from '../reviews/reviews';
 import Contacts from '../contacts/contacts';
+import TabsHoc from '../../hoc/tabs-hoc';
 
 
-const Tabs = () => {
-
-    const [activeTabs, setActiveTabs] = useState(1);
-
+const Tabs = ({...props}) => {
+    
     const toggleTabs = (index) => {
-        setActiveTabs(index)
+        props.onActiveTabs(index)
     }
-
 
     return (
         <div className="tabs">
             <div className="tabs__container">
                 <div className="tabs__triggers">
-                    <a className={activeTabs === 1 ? "tabs__triggers-item tabs__triggers-item--active" : "tabs__triggers-item"} onClick={() => toggleTabs(1)} href="#specifications">Характеристики</a>
-                    <a className={activeTabs === 2 ? "tabs__triggers-item tabs__triggers-item--active" : "tabs__triggers-item"} onClick={() => toggleTabs(2)} href="#reviews">Отзывы</a>
-                    <a className={activeTabs === 3 ? "tabs__triggers-item tabs__triggers-item--active" : "tabs__triggers-item"} onClick={() => toggleTabs(3)} href="#contacts">Контакты</a>
+                    <a className={props.activeTabs === 1 ? "tabs__triggers-item tabs__triggers-item--active" : "tabs__triggers-item"} onClick={() => toggleTabs(1)} href="#specifications">Характеристики</a>
+                    <a className={props.activeTabs === 2 ? "tabs__triggers-item tabs__triggers-item--active" : "tabs__triggers-item"} onClick={() => toggleTabs(2)} href="#reviews">Отзывы</a>
+                    <a className={props.activeTabs === 3 ? "tabs__triggers-item tabs__triggers-item--active" : "tabs__triggers-item"} onClick={() => toggleTabs(3)} href="#contacts">Контакты</a>
 
                 </div>
                 <div className="tabs__content">
-                    <div className={activeTabs === 1 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="specifications">
+                    <div className={props.activeTabs === 1 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="specifications">
                         <Specifications/>
                     </div>
-                    <div className={activeTabs === 2 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="reviews">
+                    <div className={props.activeTabs === 2 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="reviews">
                         <Reviews />
                     </div>
-                    <div className={activeTabs === 3 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="contacts">
+                    <div className={props.activeTabs === 3 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="contacts">
                         <Contacts />
                     </div>
 
@@ -42,4 +40,4 @@ const Tabs = () => {
 };
 
 
-export default Tabs;
+export default TabsHoc(Tabs);

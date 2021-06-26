@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from '../modal/modal';
+import ReviewHoc from '../../hoc/review-hoc';
 
-const Reviews = () => {
-
-    const [modalActive, setModalActive] = useState(false);
+const Reviews = ({...props}) => {
 
     const onModalOpenClick = () => {
-      setModalActive(true)
+        props.onModalActive(true)
     }
     
     const reviewList =  JSON.parse(localStorage.getItem('reviews')) || []
@@ -52,14 +51,14 @@ const Reviews = () => {
                 }
                 <button className="reviews__btn" type="button" onClick={onModalOpenClick}>Оставить отзыв</button>
             </div>
-            <Modal active={modalActive} setActive={setModalActive} />
+            <Modal modalActive={props.modalActive} onModalActive={props.onModalActive} />
         </>
     );
 };
 
 Reviews.prototype = {
-    active: PropTypes.bool.isRequired,
-    setActive: PropTypes.func.isRequired,
+    modalActive: PropTypes.bool.isRequired,
+    onModalActive: PropTypes.func.isRequired,
 };
 
-export default Reviews;
+export default ReviewHoc(Reviews);
