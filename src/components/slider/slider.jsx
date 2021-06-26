@@ -15,8 +15,7 @@ let position = 0;
 const movePosition = SLIDE_TO_SHOW * ITEMS_WIDTH;
 
 const Slider = ({...props}) => {
-    console.log(props);
-
+    
     const slider = useRef(null);
 
     const onButtonPrevClick = () => {

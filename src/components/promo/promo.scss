@@ -4,9 +4,10 @@
 
 .promo__container {
     margin: 0 auto;
-    padding-left: 19%;
-    padding-right: 2%;
     display: flex;
+    max-width: 1178px;
+    padding: 0 10px;
+
 }
 
 .promo__title {
@@ -23,7 +24,7 @@
 .promo__content {
     display: flex;
     flex-direction: column;
-    margin-left: 4%;
+    margin-left: 4.5%;
 }
 
 .promo__info {
@@ -35,9 +36,9 @@
 }
 
 .promo__info-item {
-    margin-right: 1%;
-    padding-left: 5px;
-    padding-right: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+    min-width: 65px;
 
 }
 

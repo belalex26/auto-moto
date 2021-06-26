@@ -16,18 +16,22 @@
 }
 
 .slider__buttons {
-    display: grid;
-    grid-template-columns: 60px auto 60px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 4%;
     margin-top: 36px;
     margin-bottom: 92px;
 }
 
 .slider__preview-list {
-    display: grid;
-    grid-template-columns: 128px 128px 128px;
-    grid-gap: 5.5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider__img-preview {
+    display: block;
+    padding-left: 2.75%;
+    padding-right: 2.75%;
 }
 
 .slider__buttons-prev,

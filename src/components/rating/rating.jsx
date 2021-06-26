@@ -27,7 +27,8 @@ const Rating = ({rating, onSetRating}) => {
 };
 
 Rating.prototype = {
-    setRating: PropTypes.func,
+    rating: PropTypes.string.isRequired,
+    onSetRating: PropTypes.func.isRequired,
 };
 
 export default Rating;

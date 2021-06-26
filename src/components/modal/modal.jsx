@@ -122,8 +122,6 @@ const Modal = (props) => {
 };
 
 Modal.prototype = {
-    active: PropTypes.bool.isRequired,
-    onModalActive: PropTypes.func.isRequired,
     rating: PropTypes.number.isRequired,
     onSetRating: PropTypes.func.isRequired
 };

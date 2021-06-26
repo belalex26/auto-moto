@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 
 const reviews = [
     {
@@ -77,5 +78,10 @@ const ModalHoc = (Component) => {
     }
     return ModalState;
 }
+
+ModalHoc.prototype = {
+    modalActive: PropTypes.bool.isRequired,
+    onModalActive: PropTypes.func.isRequired,
+};
 
 export default ModalHoc

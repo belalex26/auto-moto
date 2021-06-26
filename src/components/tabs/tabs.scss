@@ -4,21 +4,21 @@
 
 .tabs__container {
     margin: 0 auto;
-    padding-left: 19.5%;
-    padding-right: 19%;
+    max-width: 1179px;
+    padding: 0 10px;
 }
 
 .tabs__triggers {
     max-width: 591px;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    align-items: start;
     margin-left: 4px;
+    display: flex;
 }
 
 .tabs__triggers-item {
     color: #48494D;
     text-align: center;
+    display: block;
+    min-width: 195px;
     padding: 10px 0;
     font-size: 20px;
     text-decoration: none;
