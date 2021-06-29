@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Modal from '../modal/modal';
 import ReviewHoc from '../../hoc/review-hoc';
 
-const Reviews = ({...props}) => {
+const Review = ({...props}) => {
 
     const onModalOpenClick = () => {
         props.onModalActive(true)
@@ -49,16 +49,16 @@ const Reviews = ({...props}) => {
                         )
                     })
                 }
-                <button className="reviews__btn" type="button" onClick={onModalOpenClick}>Оставить отзыв</button>
+                <button className="review__btn" type="button" onClick={onModalOpenClick}>Оставить отзыв</button>
             </div>
             <Modal modalActive={props.modalActive} onModalActive={props.onModalActive} />
         </>
     );
 };
 
-Reviews.prototype = {
+Review.prototype = {
     modalActive: PropTypes.bool.isRequired,
     onModalActive: PropTypes.func.isRequired,
 };
 
-export default ReviewHoc(Reviews);
+export default ReviewHoc(Review);

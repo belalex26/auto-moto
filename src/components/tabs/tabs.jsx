@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Specifications from '../specifications/specifications';
-import Reviews from '../reviews/reviews';
+import Review from '../review/review';
 import Contacts from '../contacts/contacts';
 import TabsHoc from '../../hoc/tabs-hoc';
 
@@ -26,7 +26,7 @@ const Tabs = ({...props}) => {
                         <Specifications/>
                     </div>
                     <div className={props.activeTabs === 2 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="reviews">
-                        <Reviews />
+                        <Review />
                     </div>
                     <div className={props.activeTabs === 3 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="contacts">
                         <Contacts />

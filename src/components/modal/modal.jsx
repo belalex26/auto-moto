@@ -9,7 +9,7 @@ const ESC_PRESS = 27;
 const Modal = (props) => {
 
     useEffect(() => {
-        document.addEventListener('keydown', onClose)
+        document.addEventListener('keydown', onClose, {passive: true})
         return () => document.removeEventListener('keydown', onClose)
     })
 
