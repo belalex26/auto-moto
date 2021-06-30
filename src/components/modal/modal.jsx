@@ -94,7 +94,7 @@ const Modal = (props) => {
     }
       
   return (
-    <div className={props.modalActive ? "modal modal--active" : "modal"} onClick={() => props.onModalActive(false)}>
+    <div className={props.modalActive ? "modal modal--active" : "modal"} onClick={() => props.onModalActive(false)} role="dialog" tabIndex="-1" >
         <section className={props.modalActive ? "modal__callback modal__callback--active" : "modal__callback"} onClick={evt => evt.stopPropagation()}>
             <h2 className="modal__title">Оставить отзыв</h2>
             <form className="modal__callback-form" onSubmit={onSubmit} action="#">

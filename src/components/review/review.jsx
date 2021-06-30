@@ -51,7 +51,7 @@ const Review = ({...props}) => {
                 }
                 <button className="review__btn" type="button" onClick={onModalOpenClick}>Оставить отзыв</button>
             </div>
-            <Modal modalActive={props.modalActive} onModalActive={props.onModalActive} />
+            <Modal modalActive={props.modalActive} onModalActive={props.onModalActive} aria-hidden="true"/>
         </>
     );
 };

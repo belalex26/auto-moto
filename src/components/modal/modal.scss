@@ -13,11 +13,14 @@
     transition: .5s;
     color: #48494D;
     font-family: 'Open Sans', 'Arial', sans-serif;
+    visibility: hidden;
+    
 }
 
 .modal.modal--active {
     opacity: 1;
     pointer-events: all;
+    visibility: visible;
 }
 
 .modal__callback {
@@ -29,6 +32,7 @@
     padding-top: 0px;
     min-height: 415px;
     width: 698px;
+    overflow: hidden;
 }
 
 .modal__callback.modal__callback--active {

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 import WrappedMap from '../maps/maps';
 
@@ -19,14 +18,14 @@ const Contacts = () => {
             <p className="contacts__info-email">E-mail</p>
             <a className="contacts__info-email-link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
         </div>
-        <Link className="contacts__map" aria-label="карта">
+        <a className="contacts__map" href="https://goo.gl/maps/d7AQzK2JDKHeLnGp8" aria-label="карта">
           <WrappedMap
             googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${GOOGLE_MAP_KEY}`}
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `271px` }} />}
             mapElement={<div style={{ height: `100%` }} />}
           />
-        </Link>
+        </a>
       </section>
   );
 };
