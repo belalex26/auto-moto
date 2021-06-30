@@ -44,6 +44,13 @@
     height: 52px;
     margin-top: -5px;
     cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        border: 1px solid rgba(72, 73, 77, 0.9);
+    }
 }
 
 .slider__buttons-prev {

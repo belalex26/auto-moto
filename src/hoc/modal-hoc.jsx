@@ -43,17 +43,20 @@ const ModalHoc = (Component) => {
             } else {
                 setFormValid(true)
             }
-         }, [userNameError, feedbackError]);
+        }, [userNameError, feedbackError]);
     
         useEffect(() => {
             setItems(reviews);
-         }, []);
-    
+        }, []);
+
+           useEffect(() => {
+            const body = document.querySelector('body');
+            body.style.overflow = props.modalActive ? 'hidden' : 'auto';
+        }, [props.modalActive])
+            
         useEffect(() => {
             localStorage.setItem('reviews', JSON.stringify(items))
          }, [items]);
-    
-        
 
         return (
             <Component

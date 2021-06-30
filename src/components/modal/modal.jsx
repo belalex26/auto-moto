@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Rating from '../rating/rating';
 import ModalHoc from '../../hoc/modal-hoc';
 
+const body = document.querySelector('.body');
+
 const ESC_PRESS = 27;
 
 const Modal = (props) => {
@@ -22,6 +24,14 @@ const Modal = (props) => {
             case 'feedback':
                 props.onSetFeedbackDirty(true)
                 break
+        }
+    }
+
+    const bodyScroll = () => {
+        if (props.onModalActive === true) {
+            body.style.overflow = 'hidden'
+        } else {
+            body.style.overflow = 'auto'
         }
     }
 
@@ -51,12 +61,14 @@ const Modal = (props) => {
     const onClose = (evt) => {
         if (evt.keyCode === ESC_PRESS) {
             props.onModalActive(false)
+            bodyScroll()
         }
     }
 
     const onSubmit = (evt) => {
         evt.preventDefault();
         props.onModalActive(false)
+        bodyScroll()
     }
 
     const resetInput = () => {
