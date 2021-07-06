@@ -40,7 +40,7 @@ const Footer = () => {
               <Link className="footer__link" to="/test-drive">
                 Test drive
               </Link>
-            </li>
+            </li> 
           </ul>
         </div>
       </footer>

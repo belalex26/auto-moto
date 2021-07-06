@@ -23,27 +23,16 @@ const ModalHoc = (Component) => {
     const ModalState = (props) => {
 
         const [items, setItems] = useState(JSON.parse(localStorage.getItem('reviews')) || '[]')
-        const [userName, setUserName] = useState ('')
-        const [dignities, setDignities] = useState ('')
-        const [disadvantages, setDisadvantages] = useState ('')
-        const [rating, setRating]  = useState ('0')
-        const [feedback, setFeedback]  = useState ('')
-    
-        const [userNameDirty, setUserNameDirty] = useState(false)
-        const [feedbackDirty, setFeedbackDirty] = useState(false)
-    
-        const [userNameError, setUserNameError] = useState('Пожалуйста, заполните поле')
-        const [feedbackError, setFeedbackError] = useState('Пожалуйста, заполните поле')
-    
-        const [formValid, setFormValid] = useState(false)
-
-        useEffect(() => {
-            if (userNameError || feedbackError) {
-                setFormValid(false)
-            } else {
-                setFormValid(true)
-            }
-        }, [userNameError, feedbackError]);
+        const [values, setValues] = useState({
+            username: '',
+            dignities: '',
+            disadvantages: '',
+            rating: '',
+            feedback: ''
+          });
+        
+          const [errors, setErrors] = useState({});
+          const [formValid, setFormValid] = useState(false);
     
         useEffect(() => {
             setItems(reviews);
@@ -53,27 +42,29 @@ const ModalHoc = (Component) => {
             const body = document.querySelector('body');
             body.style.overflow = props.modalActive ? 'hidden' : 'auto';
         }, [props.modalActive])
+
+        useEffect(() => {
+            if (errors) {
+                setFormValid(false)
+            } else {
+                setFormValid(true)
+            }
+        }, [errors]);
+    
             
         useEffect(() => {
             localStorage.setItem('reviews', JSON.stringify(items))
          }, [items]);
+        
 
         return (
             <Component
                 items={items} onSetItems={setItems}
-                userName={userName} onSetUserName={setUserName}
-                dignities={dignities} onSetDignities={setDignities}
-                disadvantages={disadvantages} onSetDisadvantages={setDisadvantages}
-                rating={rating} onSetRating={setRating}
-                feedback={feedback} onSetFeedback={setFeedback}
+                values={values} setValues={setValues}
 
-                userNameDirty={userNameDirty} onSetUserNameDirty={setUserNameDirty}
-                feedbackDirty={feedbackDirty} onSetFeedbackDirty={setFeedbackDirty}
-                userNameError={userNameError} onSetUserNameError={setUserNameError}
-                feedbackError={feedbackError} onSetFeedbackError={setFeedbackError}
-
-                formValid={formValid} onSetFormValid={setFormValid}
-
+                errors={errors} setErrors={setErrors}
+                formValid={formValid} setFormValid={setFormValid}
+               
                 modalActive={props.modalActive} onModalActive={props.onModalActive}
             />
         );

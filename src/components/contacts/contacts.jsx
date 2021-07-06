@@ -1,12 +1,11 @@
 import React from 'react';
 
-import WrappedMap from '../maps/maps';
-
-const GOOGLE_MAP_KEY = 'AIzaSyAtXraCKerhmWfuQ6GQz40TVnyr6Ocep2s';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 const Contacts = () => {
   return (
       <section className="contacts">
+
         <h2 className="contacts__title visually-hidden">Контакты</h2>
         <div className="contacts__info">
             <p className="contacts__info-address">Адрес</p>
@@ -18,14 +17,19 @@ const Contacts = () => {
             <p className="contacts__info-email">E-mail</p>
             <a className="contacts__info-email-link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
         </div>
-        <a className="contacts__map" href="https://goo.gl/maps/d7AQzK2JDKHeLnGp8" aria-label="карта">
-          <WrappedMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${GOOGLE_MAP_KEY}`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `271px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          />
-        </a>
+
+        <YMaps>
+          <div className="contacts__map">
+            <Map
+              defaultState={{ center: [59.968137, 30.316272], zoom: 16 }}
+              width="431px"
+              height="271px"
+            >
+              <Placemark geometry={[59.968137, 30.316272]} />
+            </Map>
+          </div>
+        </YMaps>
+
       </section>
   );
 };
